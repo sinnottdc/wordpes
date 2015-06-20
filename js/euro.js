@@ -48,42 +48,11 @@
     var s3;
     var s4;
 
-function generate_flags() {
 
-        var createImage = function(src, title) {
-
-        var img   = new Image();
-
-        img.src   = src;
-        img.alt   = title;
-        img.title = title;
-
-        return img; 
-
-    };
-
-        //  array of images
-        var flagArray = [];
-
-        //  push two images to the array
-        //  images.push(createImage("images/Austria.jpg", "Austria"));
-        for (flags=0; flags<=33; flags++) {
-            flagArray.push(createImage(template_url + "/images/euroFlags/" + [flags] +".png"));
-        }
-
-        this.flagsG = flagArray;
-    }
 
     var flagArray = new generate_flags();
-    
-
-
-
-
-
-
-
-
+    var buttons = new buttons(drawfull);
+    var utilities = new utilities();
 
 
 jQuery(function ($) {
@@ -99,19 +68,7 @@ jQuery(function ($) {
 			return rndTabPos;
 		}
 
-		//reset button function
-		function reset() {
-			drawfull(); //re-run draw
-			$('td').removeClass("red");
-			$('td.table').addClass("hide");
-			element = 0;
-			elementCounter = 0;
-			$('select').hide();
-			$('#pickTeam').show();
-			$("#teamPicked").hide();
-			pickedTeams = []; // reset picked teams array as it was causing issues if not
-			$("html, body").animate({scrollTop:0}, 300);
-		}
+
 
 		//draw all teams button
 		function drawAllTeams() {
@@ -175,133 +132,9 @@ jQuery(function ($) {
 
 
 //Knuth shuffle function to mix up arrays
-            function shuffle(array) {
-                var currentIndex = array.length,
-                temporaryValue, randomIndex;
-
-                //while elements remain to be shuffled
-                while (0 !== currentIndex) {
-
-                    // pick a remaining element
-                    randomIndex = Math.floor(Math.random() * currentIndex);
-                    currentIndex -= 1;
-
-                    //Swap it with current element
-                    temporaryValue = array[currentIndex];
-                    array[currentIndex] = array[randomIndex];
-                    array[randomIndex] = temporaryValue;
-                }
-                return array;
-            }
-
-		//function for drawing all teams based on seed/seedgroup
-		function drawfull() {
-
-			
-
-			//seed groups
-			var seedOne = [france, germany, italy, netherlands, belgium, spain]; // 6 teams 
-			var seedTwo = [portugal, greece, croatia, bosnia, england, switzerland, ukraine, russia, denmark, romania, ]; // 10 teams
-			var seedThree = [scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, ]; //  9 teams
-			var seedFour = [montenegro, norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales]; // 9 teams
-			shuffle(seedOne);
-			shuffle(seedTwo);
-			shuffle(seedThree);
-			shuffle(seedFour);
-
-			//organise arrays into alphabetical order for select list
-			drawnTeams = [];
-			allTeams = seedOne.concat(seedTwo, seedThree, seedFour);
-			allTeams.sort(function(a, b) {
-				var nameA = a.name.toUpperCase();
-				var nameB = b.name.toUpperCase();
-				return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
-			});
 
 
-			//noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
-			function draw(noTeams, teams, tablePosition) {
-				noTeams = noTeams - 1;
-				for (i = 0, x = 0; i <= noTeams; i++, x++) {
-					var j = teams[x];
-					$('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
-					tablePosition = tablePosition + 3;
-				};
-
-            
-
-
-                /*
-                for (i = 0, x = 0; i <= noTeams; i++, x++) {
-                    var j = teams[x];
-                    $('.seed_display').find('td').eq(i).text(j.name).prepend(flagArray[j.number]).addClass("flag");
-                };*/
-			}
-
-			//positions 1 for each group - Containing 3 or 4 teams from seed 1 & possibly 1 team from seed 2 
-			(function() {
-				shuffle(seedTwo);
-				remainingSeedTwo = seedTwo.splice(3, 4) //take 4 teams from seed 2 for round 3 & 4 draw (to avoid top seed picked in later rounds)
-				var b = seedTwo.splice(5, 1); // pick 1 team from seed 2 so possibility of 2nd seed team getting in no.1 position.
-				var finalTeamsA = b.concat(seedOne); // adding 1 team from seed 2 to seed 1 array
-				shuffle(finalTeamsA); // shuffle the array
-				remainingTopSeeds = finalTeamsA.splice(3, 3); // slice 4 teams and put them into position 1 of each group. Return remaining teams
-				shuffle(finalTeamsA); // shuffle array for random positions else seed 2 will always go into group D if picked.
-				draw(4, finalTeamsA, 0); //position 1-4 draw}
-				drawnTeams = drawnTeams.concat(finalTeamsA);
-                s1 = shuffle(finalTeamsA);
-			})();
-
-			//positions 2 for each group - Containing remaining teams from seed 1 all teams from seed 2 & possibly 2 from seed 3
-			(function() {
-				var b = seedThree.splice(7, 2); //7 Add possible 2 teams from seed 3 top possibly be drawn in round 2 b = 2
-				var c = remainingTopSeeds.concat(seedTwo); //remainingTopSeeds = 4 ..seedTwo = 5  c = 9
-				roundTwo = b.concat(c); // roundTwo = 11
-				shuffle(roundTwo);
-				var a = roundTwo.splice(6, 4);
-				draw(4, a, 1);
-				drawnTeams = drawnTeams.concat(a);
-                s2 = shuffle(a);
-			})();
-
-
-
-			(function() {
-				remainingSeedThree = seedThree.splice(5, 2)
-				b = remainingSeedTwo.concat(seedThree); // 7 + 4
-				shuffle(b);
-				var a = seedFour.splice(6, 2);
-				seedThreeFinal = a.concat(b);
-				shuffle(seedThreeFinal);
-				var c = seedThreeFinal.splice(4, 4);
-				draw(4, c, 2);
-				drawnTeams = drawnTeams.concat(c);
-                s3 = shuffle(c);
-			})();
-
-			(function() {
-				a = remainingSeedThree.concat(seedThreeFinal);
-				shuffle(a);
-				a = a.splice(3, 4);
-				draw(4, a, 3);
-				drawnTeams = drawnTeams.concat(a);
-                s4 = shuffle(a);
-			})();
-
-             //concat teams to pass into displayseed function to display seeds....funniy enough
-        y = s1.concat(s2, s3, s4);
-
-        seedArray = [];
-
-        for (i=0; i<=15; i++) {
-            name = y[i].name;
-            seedArray = seedArray.concat(name);
-
-        }
-        //displayseed(seedArray);
-        displayseed(seedArray);
-		};
-
+	
        
 		drawfull();
 
@@ -354,7 +187,7 @@ jQuery(function ($) {
 			//if team not in primary draw decide where to put team selected depending on their seed/seedgroup
 			tablePos = 0;
 			if (allTeams[parsedValue].seedGroup == 1) {
-				var x = randNumber(10);
+				var x = utilities.randNumber(10);
 				if (x <= 7) {
 					tablePos = randTablePos(0, 3);
 				} else if (x >= 8 && x <= 9) {
@@ -367,7 +200,7 @@ jQuery(function ($) {
 			}
 
 			if (allTeams[parsedValue].seedGroup == 2) {
-				var x = randNumber(10);
+				var x = utilities.randNumber(10);
 				if (x <= 2) {
 					tablePos = randTablePos(0, 3);
 				} else if (x >= 3 && x <= 8) {
@@ -381,7 +214,7 @@ jQuery(function ($) {
 
 
 			if (allTeams[parsedValue].seedGroup == 3) {
-				var x = randNumber(10);
+				var x = utilities.randNumber(10);
 				if (x <= 1) {
 					tablePos = randTablePos(4, 7);
 				} else if (x >= 2 && x <= 8) {
@@ -394,7 +227,7 @@ jQuery(function ($) {
 			}
 
 			if (allTeams[parsedValue].seedGroup == 4) {
-				var x = randNumber(10);
+				var x = utilities.randNumber(10);
 				if (x <= 2) {
 					tablePos = randTablePos(8, 11);
 				} else if (x >= 2 && x <= 10) {
@@ -468,7 +301,7 @@ jQuery(function ($) {
 
 		//reset button
 		$('#reset').click(function() {
-			reset();
+			buttons.reset();
 		});
 
 		(function() {

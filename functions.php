@@ -38,6 +38,8 @@ wp_register_script('sharedFunctions', get_template_directory_uri() . '/js/shared
 wp_enqueue_script('sharedFunctions');
 
 if (is_page_template('euro.php'))  {
+	wp_register_script('drawfulleuro', get_template_directory_uri() . '/js/drawfulleuro.js','', '', true);
+	wp_enqueue_script('drawfulleuro');
 	wp_register_script('euro', get_template_directory_uri() . '/js/euro.js','', '', true);
 	wp_enqueue_script('euro');
 }
