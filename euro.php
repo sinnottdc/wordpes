@@ -5,7 +5,10 @@
 get_header();?>
 
 
+
 <div id="content">
+
+		
 	<div id="tables">
 		<div id="grpA" class="myTables">
 			<table class="buttonSpace" >
@@ -84,7 +87,76 @@ get_header();?>
 			</table>
 		</div><!-- grpd end -->
 	</div><!-- tables end -->
+	<button id="start_draw" type="button">Start the Draw</button>
+<div id="show_seeds">
+	<h3>European Chapionships: Qualified Teams</h3>
+	<div id="seed_tables" class="seed_one">
 	
+	<table class="seed_display">
+		<tr>
+			<th>Top Seeds</th>
+		</tr>
+		<tr>
+			<td>1.</td>
+		</tr>	
+		<tr>
+			<td>2.</td>
+		</tr>
+		<tr>
+			<td>3.</td>
+		</tr>
+		<tr>
+			<td>4.</td>
+		</tr>
+	</table>
+	<table class="seed_display">
+		<tr>
+			<th>Second Seeds</th>
+		</tr>
+		<tr>
+			<td>1.</td>
+		</tr>	
+		<tr>
+			<td>2.</td>
+		</tr>
+		<tr>
+			<td>3.</td>
+		</tr>
+		<tr>
+			<td>4.</td>
+		</tr>
+	</table>
+	<table class="seed_display">
+		<tr>
+			<th>Third Seeds</th>
+		</tr>
+		<tr>
+			<td>1.</td>
+		</tr>	
+		<tr>
+			<td>2.</td>
+		</tr>
+		<tr>
+			<td>3.</td>
+		</tr>
+		<tr>
+			<td>4.</td>
+		</tr>
+		<tr>
+			<td>5.</td>
+		</tr>	
+		<tr>
+			<td>6.</td>
+		</tr>
+		<tr>
+			<td>7.</td>
+		</tr>
+		<tr>
+			<td>8.</td>
+		</tr>
+	</table>
+	</div><!--seed_tables-->
+</div><!--show_seeds-->
 <?php
 require('pesdrawbuttons.php');
 ?>
