@@ -1,0 +1,1175 @@
+/*
+Theme Name: PesDraw
+Theme URI: http://www.pesdraw.com
+Author: Darren Sinnott
+Author URI: 
+Description: A theme for PesDraw.com
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: 
+Text domain: pes draw
+
+*/
+	
+
+	html, body {
+    margin: 0 auto;
+    min-height: 100%;
+	background: -webkit-linear-gradient(grey, white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(grey, white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(grey, white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(grey, white); /* Standard syntax (must be last) */
+}
+
+body {
+	width:960px;
+	//margin: 0 auto;
+	height: 100p%;
+	
+	
+}
+
+#container
+{
+	margin: 0 auto;
+	background: #fff;
+	width: 100%;
+}
+
+main {
+	margin: 0 auto;
+	background: #fff;
+	width: 100%;
+}
+
+header {
+	margin: 0 auto;
+	background: white;
+	padding: 20px;
+	border: 10px;
+	font-size: 30px;
+	font-family: 'Oswald', sans-serif;
+	background: -webkit-linear-gradient(left, grey , white); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, grey, white); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, grey, white); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, grey, white); /* Standard syntax */
+	
+}
+
+header h1 {
+	margin: 0 auto; 
+	padding-top: 0px;
+	padding-bottom: 17px;
+}
+
+div#title {
+  color: black;
+  /* margin: 0 auto; */
+  /* padding-left: 31px; */
+}
+
+img.pesLogo {
+    float:  left;
+	padding-top: 24px;
+	padding-right; 11px
+}
+
+
+
+#titleposition {
+	background-color: white;
+	width: 96%;
+	padding-left: 50px;
+	height: 50%;
+	margin: 0 auto;
+}
+
+nav {
+	float: left;
+	width: 100%;
+	background: black;
+	
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	/* border: none; */
+	font-family: 'Oswald', sans-serif;
+}
+
+nav ul li {
+	list-style-type: none;
+	display: inline;
+}
+
+nav li a {
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+
+	/* border: none; */
+}
+
+nav li a:hover {
+	background: #423388; 
+	/* border: none; */
+}
+
+footer {
+	background: #ccc;
+	text-align: center;
+	margin-top: 10px;
+	font-family: 'Oswald', sans-serif;
+	height: 20px;
+	font-size: 10px;
+	padding-top: 5px;
+}
+
+button {
+	height:50px;
+	width: 24%;
+	font-family: 'Oswald', sans-serif;
+	position: center;
+	font-size: 1em;
+	margin-top: 10px;
+}
+
+#reset {
+	margin-right: 0%;
+	font-size: 1em;
+}
+
+#buttons {
+	width: 98%;
+	margin: 0 auto;
+	height: 20%;
+}
+
+#drawAll {
+	font-size: 1em;
+	margin-left: 1px;
+	font-size: 1em;
+}
+
+#pickTeam {
+	margin-left: 1.4%;
+	font-size: 1em;
+	font-size: 1em;
+}
+
+#teamPicked {
+	margin-left: 1.4%;
+	font-size: 1em;
+	font-size: 1em;
+}
+
+select {
+	width: 24%;
+	font-family: 'Oswald', sans-serif;
+	height:50px;
+	background: -webkit-linear-gradient(#F7F7F7, #DDDDDD); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#F7F7F7, #DDDDDD); /* For Opera 11.1 to 12.0 */		background: -moz-linear-gradient(#F7F7F7, #DDDDDD); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#F7F7F7, #DDDDDD); /* Standard syntax (must be last) */
+	margin-left: 1.4%;
+	font-size: 1em;
+	cursor:pointer;
+	padding-left: 7%;
+}
+
+tr {
+	width: 25%;
+}
+
+td {
+	//width: 25%;
+	font: verdana;
+}
+
+th {
+	width: 25%;
+	text-align: centre;
+	text-decoration: underline;
+}
+
+#titleposition a  {
+text-decoration: none;
+}
+
+#titleposition a:visited  {
+text-decoration: none;
+ color: black;
+}
+
+img.pesLogo {
+  float: left;
+  padding-top: 4px;
+  padding-right: 10px;
+  padding-left: 16px;
+  /* margin: 0 auto; */
+}
+
+.konamiLink {
+	
+	float: right; 
+	border-left: 1px solid #fff;
+}
+
+
+.welcomeHeader {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 50px;
+	padding-top: 20px;
+	font-family: 'Oswald', sans-serif;
+}
+
+.about {
+	font-size: 20px;
+	margin: 0 auto;
+	width: 90%;
+	font-family: 'Oswald', sans-serif;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.hide {
+	visibility: hidden
+}
+#content {
+height: 100%;
+background-color: white;
+width: 100%;
+}
+
+table {
+	border-spacing: 50px 20px;
+	font-family: 'Oswald', sans-serif;
+	border-style: outset;
+	
+}
+
+.myTables {
+	width:25%;
+	float:left;
+	display: inline-block;
+}
+
+.table {
+	//width: 100px;
+	float: left;
+	display: inline-block;
+	
+}
+
+.red {
+	color: #1E98BD;
+	//font-weight: bold;
+}
+
+.flag img{
+	padding-right: 10px;
+	//padding-top: 20px;
+}
+
+.topButton {
+display: none;
+}
+
+@media screen and (max-width: 730px) {
+
+html body{
+background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)) repeat scroll 0% 0% transparent;
+margin: 0 auto;
+    min-height: 100%;
+}
+body{
+width: 480px;
+
+}
+ header{
+ padding: 0px;
+ }
+
+.myTables {
+width: 50%;
+
+}
+
+button {
+width: 25%;
+position: fixed;
+top: 157px;
+left: 0px;
+
+
+}
+
+select {
+width: 25%;
+left: 72%;
+position: fixed;
+top: 168px;
+padding-left: 3%;
+padding-bottom: 5px;
+height: 9.5%;
+
+}
+#teamPicked{
+//font-size: 15px;
+margin-top: 10px;
+font-size: 14px;
+
+}
+.buttonSpace {
+margin-top: 216px;
+
+}
+#buttonSpace{
+position: fixed;
+top: 162px;
+left: 0px;
+width: 100%;
+background: white;
+height: 60px;
+}
+
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+}
+
+nav {
+position: fixed;
+top: 88px;
+left: 0;
+width: 100%;
+height: 46px;
+border: none;
+font-size: 20px;
+/* padding-left: 36px; */
+}
+
+#reset {
+	left: 75.5%;
+}
+
+#pickTeam {
+left: 0%;
+margin-left: 0%;
+}
+
+#drawAll {
+left: 50%;
+}
+
+#draw {
+left: 25%;
+}
+
+#teamPicked {
+	left: 0%;
+	margin-left: 0%;
+	
+}
+
+
+table {
+background-color: white;
+}
+body.index{
+height: 100%;
+width: 96%;
+}
+
+.welcomeHeader {
+padding-top: 150px;
+}
+.hideMobile {
+	display: none;
+}
+
+.topButton {
+display: none;
+}
+
+@media screen and (max-width: 415px) {
+
+	nav li a:hover {
+  background: none;
+  /* border: none; */
+}
+	
+
+.welcomeHeader {
+	font-size: 37px;
+	padding-top: 111px;
+}
+nav li a {
+	border: none;
+	padding-left: 23px;
+	padding-top: 7px;
+	/* width: 15%; */
+}
+
+li.euroCupLink {
+	/* float: right; */
+	/* padding-left: 9px; */
+	/* width: 40%; */
+	/* border: none; */
+}
+
+li.worldCupLink {
+/* padding-left:35px; */	
+/* width: 33%; */
+/* padding-right: 30px; */
+}
+
+
+header h1 {
+	padding-bottom: 0px;
+}
+th {
+	font-size: 1.7em;
+nav li a {
+	float: right;
+  text-align: center;
+  margin: 0 auto;
+  padding-right: 31px;
+  padding-left: 32px;
+}
+html, body {
+    margin: 0 0;
+    min-height: 100%;
+	}
+	
+	html {
+	background: none;
+	}
+#title {
+clear: both;
+}
+
+#titleposition{
+padding-left: 8%;
+}
+
+body {
+    width: 291px;
+}
+
+#title {
+    clear: none;
+}
+
+td.table.flag {
+width: 100%;
+}
+
+a.worldCupLink{
+border-right: none;
+padding-left: 8%;
+text-align: center;
+
+
+}
+
+.links{
+width: 40%;
+}
+
+.linkHome {
+width: 20%;
+}
+
+.linkEuro{
+width: 50%;
+text-align: center;
+
+
+}
+.hideMobile {
+	display: none;
+}
+
+.myTables {
+
+width: 70%;
+}
+footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+button {
+	height:68px;
+	margin-left: 5px;
+	margin-top: 4px;
+	position: fixed;
+	left: 72%;
+}
+
+#reset {
+margin-right: 0%;
+font-size: 1em;
+top: 373px;
+left: 72%;
+}
+
+
+
+#drawAll {
+top: 301px;
+left: 73.3%;
+}
+
+#pickTeam {
+
+	font-size: 1em;
+	top: 160px;
+	left: 73.5%;
+	
+	
+	
+}
+#draw{
+top: 230px;
+left: 72%;
+}
+
+#teamPicked {
+	
+	font-size: 13px;
+left: 72%;
+top: 154px;
+	
+}
+
+
+#backToTop {
+    top: 446px;
+    height: 110px;
+	left: 72%;
+}
+
+
+select {
+
+width: 25%;
+padding-left: 0%;
+height: 68px;
+position: fixed;
+left: 72%;
+top: 164px;
+}
+
+#buttonSpace{
+display: none;
+}
+
+table {
+    border-spacing: 46px 20px;
+	width: 107%;
+ }
+ 
+ p.about{
+ padding-bottom: 40px;
+ }
+ 
+ .buttonSpace {
+margin-top: 0px;
+ }
+ 
+#grpA.myTables {
+margin-top: 164px;
+}
+.topButton {
+visibility: hidden;
+}
+
+}
+
+@media screen and (max-width: 325px) {
+html  body{
+min-width: 250px;
+}
+
+tbody {
+display: table;
+}
+html {
+background: none;
+}
+
+body {
+    width: 280px;
+}
+
+.worldCupLink{
+border-right: none;
+padding-left: 3%;
+}
+table {
+    border-spacing: 46px 20px;
+	border-collapse: collapse;
+ }
+ 
+ td.table.flag {
+    width: 100%;
+    padding-left: 17%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#title{
+clear: left;
+}
+#reset {
+top: 456px;
+}
+img.pesLogo {
+    float: left;
+    margin-left: 7%;
+}
+#titleposition{
+padding-left: 23%;
+}
+
+
+#drawAll {
+top: 385px;
+}
+
+#pickTeam {
+
+top: 243px;
+	
+	
+	
+}
+#draw{
+top: 314px;
+}
+
+#teamPicked {
+	top: 238px;
+left: 73.5%;
+	
+}
+body {
+    width: 0px;
+}
+#backToTop {
+top: 533px;
+height: 126px;
+left: 72%;
+}
+
+select {
+
+
+top: 243px;
+}
+nav{
+top: 209px;
+}
+#grpA.myTables {
+margin-top: 269px;
+}
+#grpB.myTables {
+    margin-top: 25px;
+}
+.welcomeHeader {
+    padding-top: 226px;
+}
+.buttonSpace {
+    margin-top: -25px;
+}
+.topButton {
+visibility: hidden;
+}
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { /* STYLES GO HERE */
+html, body {
+    margin: 0 auto;
+    min-height: 100%;
+	}
+	
+	html {
+	background: none;
+	}
+#title {
+clear: both;
+}
+
+#titleposition{
+padding-left: 8%;
+}
+
+body {
+    width: 100%;
+}
+
+#title {
+    clear: none;
+}
+
+td.table.flag {
+width: 111%;
+font-size: 1.5em;
+}
+
+.worldCupLink{
+/* border-right: none; */
+/* padding-left: 8%; */
+
+
+}
+
+.links{
+width: 40%;
+}
+
+.linkHome {
+width: 20%;
+}
+
+.linkEuro{
+width: 57%;
+
+}
+.hideMobile {
+	display: none;
+}
+
+.myTables {
+
+width: 70%;
+}
+footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: 1em;
+ padding-top: 13px;
+}
+button {
+	height:68px;
+	margin-left: 5px;
+	margin-top: 4px;
+	position: fixed;
+	left: 72%;
+}
+
+#reset {
+margin-right: 0%;
+font-size: 1em;
+top: 370px;
+left: 72%;
+}
+
+
+
+#drawAll {
+top: 300px;
+left: 73.2%;
+}
+
+#pickTeam {
+
+	font-size: 1em;
+	top: 160px;
+	left: 73.6%;
+	
+	
+	
+}
+#draw{
+top: 230px;
+left: 72%;
+}
+
+#teamPicked {
+	
+	font-size: 13px;
+left: 73.3%;
+top: 154px;
+	
+}
+
+
+#backToTop {
+    top: 440px;
+    height: 68px;
+	left: 72%;
+}
+
+
+.selectMobile {
+
+width: 23%;
+padding-left: 0%;
+height: 70px;
+position: fixed;
+left: 72%;
+top: 164px;
+}
+
+#buttonSpace{
+display: none;
+}
+
+table {
+    border-spacing: 46px 20px;
+	width: 104%;
+ }
+ 
+ p.about{
+ padding-bottom: 40px;
+ }
+ 
+ .buttonSpace {
+margin-top: 0px;
+ }
+ 
+#grpA.myTables {
+margin-top: 117px;
+/* height: 362px; */
+}
+
+header {
+background: none;
+}
+.topButton {
+display: none;
+}
+
+}
+
+@media screen and (max-width: 325px) {
+html  body{
+min-width: 250px;
+}
+
+tbody {
+display: table;
+}
+html {
+background: none;
+}
+
+body {
+    width: 280px;
+}
+
+.worldCupLink{
+border-right: none;
+padding-left: 3%;
+}
+table {
+    border-spacing: 46px 20px;
+	border-collapse: collapse;
+ }
+ 
+ td.table.flag {
+    width: 100%;
+    padding-left: 17%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#title{
+clear: left;
+}
+#reset {
+top: 456px;
+}
+img.pesLogo {
+    float: left;
+    margin-left: 7%;
+}
+#titleposition{
+padding-left: 23%;
+}
+
+
+#drawAll {
+top: 385px;
+}
+
+#pickTeam {
+
+top: 243px;
+	
+	
+	
+}
+#draw{
+top: 314px;
+}
+
+#teamPicked {
+	top: 238px;
+left: 73.5%;
+	
+}
+body {
+    width: 0px;
+}
+#backToTop {
+top: 533px;
+height: 126px;
+left: 72%;
+}
+
+select {
+
+
+top: 243px;
+}
+nav{
+top: 209px;
+}
+#grpA.myTables {
+margin-top: 270px;
+}
+#grpB.myTables {
+    margin-top: 25px;
+}
+.welcomeHeader {
+    padding-top: 226px;
+}
+.buttonSpace {
+    margin-top: -25px;
+}
+html  body{
+min-width: 250px;
+}
+
+tbody {
+display: table;
+}
+html {
+background: none;
+}
+
+body {
+    width: 280px;
+}
+
+.worldCupLink{
+border-right: none;
+padding-left: 3%;
+}
+table {
+    border-spacing: 46px 20px;
+	border-collapse: collapse;
+ }
+ 
+ td.table.flag {
+    width: 100%;
+    padding-left: 17%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#title{
+clear: left;
+}
+#reset {
+top: 456px;
+}
+img.pesLogo {
+    float: left;
+    margin-left: 7%;
+}
+#titleposition{
+padding-left: 23%;
+}
+
+
+#drawAll {
+top: 385px;
+}
+
+#pickTeam {
+
+top: 243px;
+left: 73.6%;
+	
+	
+	
+}
+#draw{
+top: 314px;
+}
+
+#teamPicked {
+	top: 238px;
+left: 73.5%;
+	
+}
+body {
+    width: 0px;
+}
+.topButton {
+top: 533px;
+height: 126px;
+left: 72%;
+
+display: none;
+
+}
+
+select {
+
+left: 72.5%;
+top: 247px;
+width: 25%;
+}
+nav{
+top: 209px;
+}
+#grpA.myTables {
+margin-top: 270px;
+}
+#grpB.myTables {
+    margin-top: 25px;
+}
+.welcomeHeader {
+    padding-top: 226px;
+}
+.buttonSpace {
+    margin-top: -25px;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { /* STYLES GO HERE */
+html {
+height: 100%;
+}
+#titleposition{
+padding-left: 8%;
+}
+
+nav {
+    top: 87px;
+}
+table {
+    border-spacing: 46px 20px;
+    border-collapse: collapse;
+	height: 192px;
+
+}
+.welcomeHeader {
+    padding-top: 102px;
+	font-size: 27px;
+}
+
+p.about {
+    padding-bottom: 40px;
+    font-size: 18.4px;
+}
+ 
+
+#grpA.myTables {
+    margin-top: 124px;
+}
+
+
+header {
+background: #FFF;
+}
+
+img.pesLogo {
+    margin-left: -4%;
+
+}
+#title {
+    clear: none;
+    margin: -5%;
+}
+
+#pickTeam {
+    top: 121px;
+	left: 74%;
+}
+
+#draw {
+    top: 191px;
+	left: 72.4%;
+}
+#drawAll {
+    top: 261px;
+	left: 73.5%;
+}
+#reset {
+    top: 331px;
+	left: 72.4%;
+}
+
+#backToTop {
+    top: 401px;
+    height: 75px;
+    left: 72.5%;
+}
+
+footer {
+width: 74.3%;
+}
+
+select{
+left: 72.5%;
+top: 126px;
+height: 67px;
+width: 25%;
+
+}
+#teamPicked {
+    top: 113px;
+    left: 74%;
+}
+
+td.table.flag {
+    width: 100%;
+    padding-left: 17%;
+    padding-top: 1.5%;
+    padding-bottom: 3.6%;
+}
+
+footer{
+width: 100%;
+display: none;
+}
+
+#content {
+width: 117%;
+margin-left: -10%;
+}
+
+content {
+width: 124%;
+margin-left: -13%;
+}
+
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px)
+and (orientation : landscape) {
+body {
+
+background-color: blue;
+}
