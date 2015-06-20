@@ -94,7 +94,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 		function reset() {
 			drawfull(); //re-run draw
 			$('td').removeClass("red");
-			$('td').addClass("hide");
+			$('td.table').addClass("hide");
 			element = 0;
 			elementCounter = 0;
 			$('select').hide();
@@ -112,6 +112,10 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			$('#teamPicked').show().html('Draw complete');
 			element = 16;
 		}
+
+        function enter_selected_team_into_seeds_list() {
+
+        }
 /*
 		function getScreenSize(){ 
 
@@ -160,24 +164,13 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			}*/
 		}
 
-            function displayseed(seeds, seed_group) {
-
-                seeds = shuffle(seeds);
-
-                var seed_offset = 0;
-                if (seed_group == 2) {
-                    seed_offset = 4;
-                } else if (seed_group == 3) {
-                    seed_offset = 8;
-                } else if (seed_group == 4) {
-                    seed_offset = 12;
-                }
+            function displayseed(seeds) {
  
                 for (i=0; i<seeds.length; i++) {   
                 
                 seedTeam = seeds[i];  
 
-                $('.seed_display').find('td').eq(i+seed_offset).text(seedTeam.name);
+                $('.seed_display').find('td').eq(i).text(seedTeam.name);
             }
 
             }
@@ -248,7 +241,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 				shuffle(finalTeamsA); // shuffle array for random positions else seed 2 will always go into group D if picked.
 				draw(4, finalTeamsA, 0); //position 1-4 draw}
 				drawnTeams = drawnTeams.concat(finalTeamsA);
-                s1 = finalTeamsA;
+                s1 = shuffle(finalTeamsA);
 			})();
 
 			//positions 2 for each group - Containing remaining teams from seed 1 all teams from seed 2 & possibly 2 from seed 3
@@ -260,7 +253,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 				var a = roundTwo.splice(6, 4);
 				draw(4, a, 1);
 				drawnTeams = drawnTeams.concat(a);
-                s2 = a;
+                s2 = shuffle(a);
 			})();
 
 
@@ -275,7 +268,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 				var c = seedThreeFinal.splice(4, 4);
 				draw(4, c, 2);
 				drawnTeams = drawnTeams.concat(c);
-                s3 = c;
+                s3 = shuffle(c);
 			})();
 
 			(function() {
@@ -284,17 +277,20 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 				a = a.splice(3, 4);
 				draw(4, a, 3);
 				drawnTeams = drawnTeams.concat(a);
-                s4 = a;
+                s4 = shuffle(a);
 			})();
+
+             //concat teams to pass into displayseed function to display seeds....funniy enough
+        seedArray = s1.concat(s2, s3, s4);
+        displayseed(seedArray);
+
 		};
 
 		drawfull();
 
+  
+       
       
-        displayseed(s1, 1);
-        displayseed(s2, 2);
-        displayseed(s3, 3);
-        displayseed(s4, 4);
 
 
 
@@ -405,6 +401,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 
 			flagValue = allTeams[parsedValue].number;
 			if (inDraw == false) {
+                removedTeam = $('td').eq(tablePos).text();
 				$('td').eq(tablePos).text(textSelected).prepend(flagArray[flagValue]).addClass('red');
 			}
 
@@ -415,7 +412,9 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			});
 
 			// event.stopPropagation(); //test if removal causes issues
+            selectedTeam = allTeams[parsedValue];
 
+            enter_selected_team_into_seeds_list(selectedTeam);
 
 		});
 
