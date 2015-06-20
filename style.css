@@ -279,6 +279,15 @@ table {
 display: none;
 }
 
+table.seed_display {
+	width: 20%;
+	float: left;
+}
+
+table.third {
+	width: 40%;
+}
+
 @media screen and (max-width: 730px) {
 
 html body{

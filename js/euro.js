@@ -1,47 +1,42 @@
-(function($){
-//	Object constructor
-	function to(name, seedGroup, number) {
-		this.name = name;
-		this.seedGroup = seedGroup;
-		//this.seed = seed;
-		this.number = number;
-	}
+
+//	Team object constructor
+
 
 //	Team object creations
-	var austria = new to("Austria", 3, 0);
-	var belgium = new to("Belgium", 1, 1);
-	var bosnia = new to("Bosnia & Herz.", 2, 2);
-	var bulgaria = new to("Bulgaria", 4, 3);
-	var croatia = new to("Croatia", 2, 4);
-	var czech = new to("Czech Republic", 3, 5);
-	var denmark = new to("Denmark", 2, 6);
-	var england = new to("England", 2, 7);
-	var finland = new to("Finland", 4, 8);
-	var france = new to("France", 1, 9);
-	var germany = new to("Germany", 1, 10);
-	var greece = new to("Greece", 2, 11);
-	var hungary = new to("Hungary", 3, 12);
-	var israel = new to("Israel", 4, 13);
-	var italy = new to("Italy", 1, 14);
-	var montenegro = new to("Montenegro", 4, 15);
-	var netherlands = new to("Netherlands", 1, 16);
-	var northernIreland = new to("N.Ireland", 4, 17);
-	var norway = new to("Norway", 4, 18);
-	var poland = new to("Poland", 4, 19);
-	var portugal = new to("Portugal", 2, 20);
-	var ireland = new to("Ireland", 4, 21);
-	var romania = new to("Romania", 2, 22);
-	var russia = new to("Russia", 2, 23);
-	var scotland = new to("Scotland", 3, 24);
-	var serbia = new to("Serbia", 3, 25);
-	var slovakia = new to("Slovakia", 3, 26);
-	var slovenia = new to("Slovenia", 3, 27);
-	var spain = new to("Spain", 1, 28);
-	var sweden = new to("Sweden", 3, 29);
-	var switzerland = new to("Switzerland", 2, 30);
-	var turkey = new to("Turkey", 3, 31);
-	var ukraine = new to("Ukraine", 2, 32);
-	var wales = new to("Wales", 4, 33);
+	var austria = new team("Austria", 3, 0);
+	var belgium = new team("Belgium", 1, 1);
+	var bosnia = new team("Bosnia & Herz.", 2, 2);
+	var bulgaria = new team("Bulgaria", 4, 3);
+	var croatia = new team("Croatia", 2, 4);
+	var czech = new team("Czech Republic", 3, 5);
+	var denmark = new team("Denmark", 2, 6);
+	var england = new team("England", 2, 7);
+	var finland = new team("Finland", 4, 8);
+	var france = new team("France", 1, 9);
+	var germany = new team("Germany", 1, 10);
+	var greece = new team("Greece", 2, 11);
+	var hungary = new team("Hungary", 3, 12);
+	var israel = new team("Israel", 4, 13);
+	var italy = new team("Italy", 1, 14);
+	var montenegro = new team("Montenegro", 4, 15);
+	var netherlands = new team("Netherlands", 1, 16);
+	var northernIreland = new team("N.Ireland", 4, 17);
+	var norway = new team("Norway", 4, 18);
+	var poland = new team("Poland", 4, 19);
+	var portugal = new team("Portugal", 2, 20);
+	var ireland = new team("Ireland", 4, 21);
+	var romania = new team("Romania", 2, 22);
+	var russia = new team("Russia", 2, 23);
+	var scotland = new team("Scotland", 3, 24);
+	var serbia = new team("Serbia", 3, 25);
+	var slovakia = new team("Slovakia", 3, 26);
+	var slovenia = new team("Slovenia", 3, 27);
+	var spain = new team("Spain", 1, 28);
+	var sweden = new team("Sweden", 3, 29);
+	var switzerland = new team("Switzerland", 2, 30);
+	var turkey = new team("Turkey", 3, 31);
+	var ukraine = new team("Ukraine", 2, 32);
+	var wales = new team("Wales", 4, 33);
 
 	element = 0;
 	var elementCounter = 0;
@@ -53,36 +48,50 @@
     var s3;
     var s4;
 
-	var createImage = function(src, title) {
-		var img   = new Image();
-		img.src   = src;
-		img.alt   = title;
-		img.title = title;
-		return img; 
-	};
+function generate_flags() {
 
-//	array of images
-	var flagArray = [];
+        var createImage = function(src, title) {
 
-//	push two images to the array
-//	images.push(createImage("images/Austria.jpg", "Austria"));
-	for (flags=0; flags<=33; flags++) {
-		flagArray.push(createImage(template_url + "/images/euroFlags/" + [flags] +".png"));
-	}
-	/*var flagArray = new Array();
-for (flags=0; flags<=33; flags++) {
-flagArray[flags] = new Image();
-flagArray[flags].src = images/euroFlags/[flags].png;
-}
-	 */
+        var img   = new Image();
+
+        img.src   = src;
+        img.alt   = title;
+        img.title = title;
+
+        return img; 
+
+    };
+
+        //  array of images
+        var flagArray = [];
+
+        //  push two images to the array
+        //  images.push(createImage("images/Austria.jpg", "Austria"));
+        for (flags=0; flags<=33; flags++) {
+            flagArray.push(createImage(template_url + "/images/euroFlags/" + [flags] +".png"));
+        }
+
+        this.flagsG = flagArray;
+    }
+
+    var flagArray = new generate_flags();
+    
+
+
+
+
+
+
+
+
+
+
+jQuery(function ($) {
+	 
 //	Function to pick random teams from each seed group & input into table
 	$(document).ready(function() {
 
-		//used for table positions for teams not in draw
-		function randNumber(max) {
-			rndNumb = Math.floor((Math.random() * max) + 1);
-			return rndNumb;
-		}
+
 
 		//used for table positions for teams not in draw
 		function randTablePos(min, max) {
@@ -113,10 +122,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			element = 16;
 		}
 
-        function enter_selected_team_into_seeds_list() {
-
-        }
-/*
+     
 		function getScreenSize(){ 
 
 			screenWidthSize = $(window).width()
@@ -128,7 +134,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			}
 			return screenWidth;
 		}
-*/
+
 
 		//draw teams individually button
 		function drawIndividual() {
@@ -154,14 +160,6 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 
 				};
 				return elementCounter;
-			/*} else {
-				element++;
-
-				if (element >= 16) { //show team picked on button
-					$('#teamPicked').show().html('Draw complete');
-				};
-
-			}*/
 		}
 
             function displayseed(seeds) {
@@ -170,10 +168,11 @@ flagArray[flags].src = images/euroFlags/[flags].png;
                 
                 seedTeam = seeds[i];  
 
-                $('.seed_display').find('td').eq(i).text(seedTeam.name);
+                $('.seed_display').find('td').eq(i).text(seedTeam);
             }
+        }
 
-            }
+
 
 //Knuth shuffle function to mix up arrays
             function shuffle(array) {
@@ -194,6 +193,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
                 }
                 return array;
             }
+
 		//function for drawing all teams based on seed/seedgroup
 		function drawfull() {
 
@@ -224,10 +224,18 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 				noTeams = noTeams - 1;
 				for (i = 0, x = 0; i <= noTeams; i++, x++) {
 					var j = teams[x];
-					$('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray[j.number]).addClass("flag");
+					$('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
 					tablePosition = tablePosition + 3;
 				};
 
+            
+
+
+                /*
+                for (i = 0, x = 0; i <= noTeams; i++, x++) {
+                    var j = teams[x];
+                    $('.seed_display').find('td').eq(i).text(j.name).prepend(flagArray[j.number]).addClass("flag");
+                };*/
 			}
 
 			//positions 1 for each group - Containing 3 or 4 teams from seed 1 & possibly 1 team from seed 2 
@@ -281,11 +289,20 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			})();
 
              //concat teams to pass into displayseed function to display seeds....funniy enough
-        seedArray = s1.concat(s2, s3, s4);
-        displayseed(seedArray);
+        y = s1.concat(s2, s3, s4);
 
+        seedArray = [];
+
+        for (i=0; i<=15; i++) {
+            name = y[i].name;
+            seedArray = seedArray.concat(name);
+
+        }
+        //displayseed(seedArray);
+        displayseed(seedArray);
 		};
 
+       
 		drawfull();
 
   
@@ -394,16 +411,34 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 					inDraw = true;
 					$("td:contains('" + textSelected + "')").addClass("red");
 
-					break;
+				
 				}
 
 			};
 
+
 			flagValue = allTeams[parsedValue].number;
 			if (inDraw == false) {
-                removedTeam = $('td').eq(tablePos).text();
-				$('td').eq(tablePos).text(textSelected).prepend(flagArray[flagValue]).addClass('red');
+
+              //  removedTeam = $('td').eq(tablePos).text();
+				$('td').eq(tablePos).text(textSelected).prepend(flagArray.flagsG[flagValue]).addClass('red');
 			}
+            
+            var newTeamArray = [];
+            $("#tables").find("tr").each(function(){
+                x = $(this).find('td.table').text();
+                newTeamArray.push(x);
+
+                for(i=0; i<=newTeamArray.length; i++) {
+                    if (newTeamArray[i] == "") {
+                        newTeamArray.splice(i, 1);
+                    }
+                }
+            });
+         
+        
+
+            displayseed(newTeamArray);
 
 			$("select").hide();
 
@@ -414,7 +449,7 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 			// event.stopPropagation(); //test if removal causes issues
             selectedTeam = allTeams[parsedValue];
 
-            enter_selected_team_into_seeds_list(selectedTeam);
+       
 
 		});
 
@@ -442,4 +477,4 @@ flagArray[flags].src = images/euroFlags/[flags].png;
 		});
 
 	});
-})(jQuery);
+});

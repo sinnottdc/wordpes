@@ -126,7 +126,7 @@ get_header();?>
 			<td>4.</td>
 		</tr>
 	</table>
-	<table class="seed_display">
+	<table class="seed_display third">
 		<tr>
 			<th>Third Seeds</th>
 		</tr>

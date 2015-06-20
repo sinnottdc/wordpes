@@ -34,6 +34,9 @@ wp_enqueue_script('scroll-top');
 wp_register_script('scroll', get_template_directory_uri() . '/js/scroll.js','', '', true);
 wp_enqueue_script('scroll');
 
+wp_register_script('sharedFunctions', get_template_directory_uri() . '/js/sharedFunctions.js', '', '', true );
+wp_enqueue_script('sharedFunctions');
+
 if (is_page_template('euro.php'))  {
 	wp_register_script('euro', get_template_directory_uri() . '/js/euro.js','', '', true);
 	wp_enqueue_script('euro');
