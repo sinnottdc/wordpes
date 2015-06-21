@@ -43,15 +43,7 @@
 			});
 
 
-			//noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
-			function draw(noTeams, teams, tablePosition) {
-				noTeams = noTeams - 1;
-				for (i = 0, x = 0; i <= noTeams; i++, x++) {
-					var j = teams[x];
-					jQuery('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
-					tablePosition = tablePosition + 3;
-				};
-			}
+
 
 			//positions 1 for each group - Containing 3 or 4 teams from seed 1 & possibly 1 team from seed 2 
 			(function() {
@@ -102,20 +94,7 @@
 				data.drawnTeams = data.drawnTeams.concat(a);
                 s4 = utils.shuffle(a);
 			})();
-
-             //concat teams to pass into displayseed function to display seeds....funniy enough
-        y = s1.concat(s2, s3, s4);
-
-        seedArray = [];
-
-        for (i=0; i<=15; i++) {
-            name = y[i].name;
-            seedArray = seedArray.concat(name);
-
-        }
-        //displayseed(seedArray);
-        displayDraw.displayseed(seedArray);
-
+			
         this.allTeams = data.allTeams;
         this.drawnTeams = data.drawnTeams;
 		};

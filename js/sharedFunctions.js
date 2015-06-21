@@ -19,6 +19,16 @@ function team(name, seedGroup, number) {
 	this.number = number;
 }
 
+ //noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
+function draw(noTeams, teams, tablePosition) {
+    noTeams = noTeams - 1;
+    for (i = 0, x = 0; i <= noTeams; i++, x++) {
+        var j = teams[x];
+        jQuery('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
+        tablePosition = tablePosition + 3;
+    };
+}
+
 /*
 ///Generates flag array for use when drawing teams. Flags for display in tables
 
