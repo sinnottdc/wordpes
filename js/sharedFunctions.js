@@ -77,6 +77,20 @@ function buttons() {
 			pickedTeams = []; // reset picked teams array as it was causing issues if not
 			jQuery("html, body").animate({scrollTop:0}, 300);
 		}
+
+
+        //create select button
+        this.createSelect = function() {
+                jQuery("#pickTeam").hide();
+                jQuery("select").show();
+                var options = '<option value="blank">Pick team</option>';
+                for (var i = 0; i < drawfull.allTeams.length; i++) {
+                    options += '<option value=' + drawfull.allTeams[i].number + ' data-image="images/euroFlags/"' + [i] + '>' + drawfull.allTeams[i].name + '</option>'
+                };
+
+                jQuery('select').html(options);
+        
+        }
 }
 
 function utils (max, array) {

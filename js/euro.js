@@ -42,14 +42,6 @@
 	var elementCounter = 0;
 	var screenWidth = true;
 
-    //display seeds vars
-    var s1;
-    var s2;
-    var s3;
-    var s4;
-
-
-
     var flagArray = new generate_flags();
     var buttons = new buttons();
     var utils = new utils();
@@ -69,17 +61,7 @@ jQuery(function ($) {
 		$("select").hide();
 
 
-		//select team from dynamically created select list
-		$("#pickTeam").click(function() {
-				$("#pickTeam").hide();
-				$("select").show();
-				var options = '<option value="blank">Pick team</option>';
-				for (var i = 0; i < drawfull.allTeams.length; i++) {
-					options += '<option value=' + drawfull.allTeams[i].number + ' data-image="images/euroFlags/"' + [i] + '>' + drawfull.allTeams[i].name + '</option>'
-				};
 
-				$('select').html(options);
-		});
 
 		$('select').change(function() { //take selected option
 
@@ -195,6 +177,10 @@ jQuery(function ($) {
 
 		});
 
+		//select team from dynamically created select list
+		$("#pickTeam").click(function() {
+				buttons.createSelect();
+		});
 
 		//draw button
 		$('#draw').click(function() {
