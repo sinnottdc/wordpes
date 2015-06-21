@@ -4,6 +4,32 @@
 
 			this.draw = function () {
 
+				var data = {
+				allTeams : [france, germany, italy, netherlands, belgium, spain, portugal, greece, croatia, bosnia, england, 
+				switzerland, ukraine, russia, denmark, romania, scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, montenegro, 
+				norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales],
+				seedOne : [],
+				seedTwo: [],
+				seedThree : [],
+				seedFour : [],
+				drawnTeams : []
+				}
+
+				
+				for (var i = 0; i <=data.allTeams.length-1; i++) {
+					var seed = data.allTeams[i].seedGroup;
+					if (seed == 1) {
+						data.seedOne.push(data.allTeams[i]);
+					} else if (seed == 2) {
+						data.seedTwo.push(data.allTeams[i]);
+					} else if (seed == 3) {
+						data.seedThree.push(data.allTeams[i]);
+					} else if (seed == 4) {
+						data.seedFour.push(data.allTeams[i]);
+					} 
+				}
+			
+
 			
 
 			//seed groups
