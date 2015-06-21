@@ -53,8 +53,9 @@
     var flagArray = new generate_flags();
     var buttons = new buttons();
     var utils = new utils();
-    var drawfull = new drawfull();
     var displayDraw = new displayDraw();
+
+    
 
 
 jQuery(function ($) {
@@ -74,28 +75,23 @@ jQuery(function ($) {
 				$("#pickTeam").hide();
 				$("select").show();
 				var options = '<option value="blank">Pick team</option>';
-				for (var i = 0; i < allTeams.length; i++) {
-					options += '<option value=' + allTeams[i].number + ' data-image="images/euroFlags/"' + [i] + '>' + allTeams[i].name + '</option>'
+				for (var i = 0; i < data.allTeams.length; i++) {
+					options += '<option value=' + data.allTeams[i].number + ' data-image="images/euroFlags/"' + [i] + '>' + data.allTeams[i].name + '</option>'
 				};
 
 				$('select').html(options);
 		});
 
 		$('select').change(function() { //take selected option
-
-
 			pickedTeams = drawnTeams; //had to assign to a new array. Causing issues (##need to find out why##)
 			var optionSelected = $(this).find("option:selected");
 			var valueSelected = optionSelected.val();
 			var parsedValue = parseInt(valueSelected);
 			var textSelected = optionSelected.text();
-
 			checkSelect = valueSelected;
-
-
 			//if team not in primary draw decide where to put team selected depending on their seed/seedgroup
 			tablePos = 0;
-			if (allTeams[parsedValue].seedGroup == 1) {
+			if (data.allTeams[parsedValue].seedGroup == 1) {
 				var x = utils.randNumber(10);
 				if (x <= 7) {
 					tablePos = utils.randTablePos(0, 3);
@@ -108,7 +104,7 @@ jQuery(function ($) {
 				}
 			}
 
-			if (allTeams[parsedValue].seedGroup == 2) {
+			if (data.allTeams[parsedValue].seedGroup == 2) {
 				var x = utils.randNumber(10);
 				if (x <= 2) {
 					tablePos = utils.randTablePos(0, 3);
@@ -122,7 +118,7 @@ jQuery(function ($) {
 			}
 
 
-			if (allTeams[parsedValue].seedGroup == 3) {
+			if (data.allTeams[parsedValue].seedGroup == 3) {
 				var x = utils.randNumber(10);
 				if (x <= 1) {
 					tablePos = utils.randTablePos(4, 7);
@@ -135,7 +131,7 @@ jQuery(function ($) {
 				}
 			}
 
-			if (allTeams[parsedValue].seedGroup == 4) {
+			if (data.allTeams[parsedValue].seedGroup == 4) {
 				var x = utils.randNumber(10);
 				if (x <= 2) {
 					tablePos = utils.randTablePos(8, 11);
@@ -159,7 +155,7 @@ jQuery(function ($) {
 			};
 
 
-			flagValue = allTeams[parsedValue].number;
+			flagValue = data.allTeams[parsedValue].number;
 			if (inDraw == false) {
 
               //  removedTeam = $('td').eq(tablePos).text();
@@ -189,7 +185,7 @@ jQuery(function ($) {
 			});
 
 			// event.stopPropagation(); //test if removal causes issues
-            selectedTeam = allTeams[parsedValue];
+            selectedTeam = data.allTeams[parsedValue];
 
        
 

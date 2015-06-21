@@ -2,43 +2,42 @@
 	//function for drawing all teams based on seed/seedgroup
 		function drawfull() {
 
-			function data() {
+			var data = {
+				allTeams : [france, germany, italy, netherlands, belgium, spain, portugal, greece, croatia, bosnia, england, 
+				switzerland, ukraine, russia, denmark, romania][portugal, greece, croatia, bosnia, england, switzerland, ukraine, 
+				russia, denmark, romania, scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, montenegro, 
+				norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales],
+				seedOne : [],
+				seedTwo: [],
+				seedThree : [],
+				seedFour : [],
+				drawnTeams : []
+				}
+			}
 
+			function sortToArrays() {
+				for (var i = 0; i <=allTeams.length; i++) {
+					if (allTeams[i].seedgroup == 1) {
+						data.seedOne.concat(allTeams[i]);
+					} else if (allTeams[i].seedgroup == 2) {
+						data.seedTwo.concat(allTeams[i]);
+					} else if (allTeams[i].seedgroup == 3) {
+						data.seedThree.concat(allTeams[i]);
+					} 
+				}
+			}
 
-				//seed groups
-				var seedOne = [france, germany, italy, netherlands, belgium, spain]; // 6 teams 
-				var seedTwo = [portugal, greece, croatia, bosnia, england, switzerland, ukraine, russia, denmark, romania, ]; // 10 teams
-				var seedThree = [scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, ]; //  9 teams
-				var seedFour = [montenegro, norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales]; // 9 teams
-
-				utils.shuffle(seedOne);
-				utils.shuffle(seedTwo);
-				utils.shuffle(seedThree);
-				utils.shuffle(seedFour);
-
-				this.seed1 = seedOne;
-				this.seed2 = seedTwo;
-				this.seed3 = seedThree;
-				this.seed4 = seedFour;
 
 
 				//organise arrays into alphabetical order for select list
 				drawnTeams = [];
 
-				allTeams = seedOne.concat(seedTwo, seedThree, seedFour);
-
-				allTeams.sort(function(a, b) {
+				data.allTeams.sort(function(a, b) {
 					var nameA = a.name.toUpperCase();
 					var nameB = b.name.toUpperCase();
 					return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
 				})
-
-				this.drawnTeams;
-				this.allTeams;
 				
-			}	
-
-			data = new data();
 
 			this.draw = function () {
 
