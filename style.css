@@ -282,11 +282,14 @@ display: none;
 table.seed_display {
 	width: 20%;
 	float: left;
+	display:none;
 }
 
 table.third {
 	width: 40%;
 }
+
+
 
 @media screen and (max-width: 730px) {
 

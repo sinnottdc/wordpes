@@ -51,99 +51,18 @@
 
 
     var flagArray = new generate_flags();
-    var buttons = new buttons(drawfull);
-    var utilities = new utilities();
+    var buttons = new buttons();
+    var utils = new utils();
+    var drawfull = new drawfull();
+    var displayDraw = new displayDraw();
 
 
 jQuery(function ($) {
 	 
 //	Function to pick random teams from each seed group & input into table
 	$(document).ready(function() {
-
-
-
-		//used for table positions for teams not in draw
-		function randTablePos(min, max) {
-			rndTabPos = Math.floor((Math.random() * (max - min + 1)) + min);
-			return rndTabPos;
-		}
-
-
-
-		//draw all teams button
-		function drawAllTeams() {
-			$("select").hide();
-			$('td').removeClass("hide");
-			$('#pickTeam').hide();
-			$('#teamPicked').show().html('Draw complete');
-			element = 16;
-		}
-
-     
-		function getScreenSize(){ 
-
-			screenWidthSize = $(window).width()
-
-			if (screenWidthSize >= 730) {
-				screenWidth = true;
-			} else {
-				screenWidth = false;
-			}
-			return screenWidth;
-		}
-
-
-		//draw teams individually button
-		function drawIndividual() {
-			/*if (element==0) {
-		getScreenSize();}*/
-			$("select").hide();
-			$('#pickTeam').hide();
-			$('#teamPicked').show().html('Draw in progress');
-			$('td:eq(' + element + ')').removeClass("hide");
-			//if (screenWidth==true) {
-				elementCounter++;
-				element = element + 4;
-				if (elementCounter==4) {
-					element = 1;
-				} else if (elementCounter==8) {
-					element = 2;
-				} else if (elementCounter==12) {
-					element = 3;
-				} 
-
-				if (element >= 16) { //show team picked on button
-					$('#teamPicked').show().html('Draw complete');
-
-				};
-				return elementCounter;
-		}
-
-            function displayseed(seeds) {
- 
-                for (i=0; i<seeds.length; i++) {   
-                
-                seedTeam = seeds[i];  
-
-                $('.seed_display').find('td').eq(i).text(seedTeam);
-            }
-        }
-
-
-
-//Knuth shuffle function to mix up arrays
-
-
 	
-       
-		drawfull();
-
-  
-       
-      
-
-
-
+		drawfull.draw();
 
 		//pick team button
 		$("#teamPicked").hide();
@@ -152,8 +71,6 @@ jQuery(function ($) {
 
 		//select team from dynamically created select list
 		$("#pickTeam").click(function() {
-			//getScreenSize();
-			//if (screenWidth==true) {
 				$("#pickTeam").hide();
 				$("select").show();
 				var options = '<option value="blank">Pick team</option>';
@@ -161,15 +78,7 @@ jQuery(function ($) {
 					options += '<option value=' + allTeams[i].number + ' data-image="images/euroFlags/"' + [i] + '>' + allTeams[i].name + '</option>'
 				};
 
-				$('select').html(options);/*} else {
-					$("#pickTeam").hide();
-					$("select").show();
-					var options = '<option value="blank">Pick</option>';
-					for (var i = 0; i < allTeams.length; i++) {
-						options += '<option value=' + allTeams[i].number + '>' + allTeams[i].name + '</option>'
-					};
-					$('select').html(options);}*/
-
+				$('select').html(options);
 		});
 
 		$('select').change(function() { //take selected option
@@ -187,26 +96,26 @@ jQuery(function ($) {
 			//if team not in primary draw decide where to put team selected depending on their seed/seedgroup
 			tablePos = 0;
 			if (allTeams[parsedValue].seedGroup == 1) {
-				var x = utilities.randNumber(10);
+				var x = utils.randNumber(10);
 				if (x <= 7) {
-					tablePos = randTablePos(0, 3);
+					tablePos = utils.randTablePos(0, 3);
 				} else if (x >= 8 && x <= 9) {
-					tablePos = randTablePos(4, 7);
+					tablePos = utils.randTablePos(4, 7);
 				} else if (x == 10) {
-					tablePos = randTablePos(8, 11);
+					tablePos = utils.randTablePos(8, 11);
 				} else {
 					return false;
 				}
 			}
 
 			if (allTeams[parsedValue].seedGroup == 2) {
-				var x = utilities.randNumber(10);
+				var x = utils.randNumber(10);
 				if (x <= 2) {
-					tablePos = randTablePos(0, 3);
+					tablePos = utils.randTablePos(0, 3);
 				} else if (x >= 3 && x <= 8) {
-					tablePos = randTablePos(4, 7);
+					tablePos = utils.randTablePos(4, 7);
 				} else if (x >= 8 && x <= 10) {
-					tablePos = randTablePos(8, 11);
+					tablePos = utils.randTablePos(8, 11);
 				} else {
 					return false;
 				}
@@ -214,24 +123,24 @@ jQuery(function ($) {
 
 
 			if (allTeams[parsedValue].seedGroup == 3) {
-				var x = utilities.randNumber(10);
+				var x = utils.randNumber(10);
 				if (x <= 1) {
-					tablePos = randTablePos(4, 7);
+					tablePos = utils.randTablePos(4, 7);
 				} else if (x >= 2 && x <= 8) {
-					tablePos = randTablePos(8, 11);
+					tablePos = utils.randTablePos(8, 11);
 				} else if (x >= 9 && x <= 10) {
-					tablePos = randTablePos(12, 15);
+					tablePos = utils.randTablePos(12, 15);
 				} else {
 					return false;
 				}
 			}
 
 			if (allTeams[parsedValue].seedGroup == 4) {
-				var x = utilities.randNumber(10);
+				var x = utils.randNumber(10);
 				if (x <= 2) {
-					tablePos = randTablePos(8, 11);
+					tablePos = utils.randTablePos(8, 11);
 				} else if (x >= 2 && x <= 10) {
-					tablePos = randTablePos(12, 15);
+					tablePos = utils.randTablePos(12, 15);
 				} else {
 					return false;
 				}
@@ -271,7 +180,7 @@ jQuery(function ($) {
          
         
 
-            displayseed(newTeamArray);
+            displayDraw.displayseed(newTeamArray);
 
 			$("select").hide();
 
@@ -290,13 +199,13 @@ jQuery(function ($) {
 		//draw button
 		$('#draw').click(function() {
 			scroll();
-			drawIndividual();
+			displayDraw.drawIndividual();
 
 		});
 
 		//draw all teams button
 		$('#drawAll').click(function() {
-			drawAllTeams();
+			displayDraw.drawAllTeams();
 		});
 
 		//reset button

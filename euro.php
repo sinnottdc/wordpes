@@ -88,7 +88,7 @@ get_header();?>
 		</div><!-- grpd end -->
 	</div><!-- tables end -->
 	<button id="start_draw" type="button">Start the Draw</button>
-<div id="show_seeds">
+<div id="show_seeds" class="remove">
 	<h3>European Chapionships: Qualified Teams</h3>
 	<div id="seed_tables" class="seed_one">
 	
