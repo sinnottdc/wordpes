@@ -2,29 +2,45 @@
 	//function for drawing all teams based on seed/seedgroup
 		function drawfull() {
 
+			function data() {
+
+
+				//seed groups
+				var seedOne = [france, germany, italy, netherlands, belgium, spain]; // 6 teams 
+				var seedTwo = [portugal, greece, croatia, bosnia, england, switzerland, ukraine, russia, denmark, romania, ]; // 10 teams
+				var seedThree = [scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, ]; //  9 teams
+				var seedFour = [montenegro, norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales]; // 9 teams
+
+				utils.shuffle(seedOne);
+				utils.shuffle(seedTwo);
+				utils.shuffle(seedThree);
+				utils.shuffle(seedFour);
+
+				this.seed1 = seedOne;
+				this.seed2 = seedTwo;
+				this.seed3 = seedThree;
+				this.seed4 = seedFour;
+
+
+				//organise arrays into alphabetical order for select list
+				drawnTeams = [];
+
+				allTeams = seedOne.concat(seedTwo, seedThree, seedFour);
+
+				allTeams.sort(function(a, b) {
+					var nameA = a.name.toUpperCase();
+					var nameB = b.name.toUpperCase();
+					return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
+				})
+
+				this.drawnTeams;
+				this.allTeams;
+				
+			}	
+
+			data = new data();
+
 			this.draw = function () {
-
-			
-
-			//seed groups
-			var seedOne = [france, germany, italy, netherlands, belgium, spain]; // 6 teams 
-			var seedTwo = [portugal, greece, croatia, bosnia, england, switzerland, ukraine, russia, denmark, romania, ]; // 10 teams
-			var seedThree = [scotland, sweden, serbia, turkey, hungary, czech, slovenia, austria, slovakia, ]; //  9 teams
-			var seedFour = [montenegro, norway, finland, poland, ireland, israel, bulgaria, northernIreland, wales]; // 9 teams
-			utils.shuffle(seedOne);
-			utils.shuffle(seedTwo);
-			utils.shuffle(seedThree);
-			utils.shuffle(seedFour);
-
-			//organise arrays into alphabetical order for select list
-			drawnTeams = [];
-			allTeams = seedOne.concat(seedTwo, seedThree, seedFour);
-			allTeams.sort(function(a, b) {
-				var nameA = a.name.toUpperCase();
-				var nameB = b.name.toUpperCase();
-				return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
-			});
-
 
 			//noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
 			function draw(noTeams, teams, tablePosition) {
@@ -34,21 +50,12 @@
 					jQuery('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
 					tablePosition = tablePosition + 3;
 				};
-
-            
-
-
-                /*
-                for (i = 0, x = 0; i <= noTeams; i++, x++) {
-                    var j = teams[x];
-                    $('.seed_display').find('td').eq(i).text(j.name).prepend(flagArray[j.number]).addClass("flag");
-                };*/
 			}
 
 			//positions 1 for each group - Containing 3 or 4 teams from seed 1 & possibly 1 team from seed 2 
-			(function() {
-				utils.shuffle(seedTwo);
-				remainingSeedTwo = seedTwo.splice(3, 4) //take 4 teams from seed 2 for round 3 & 4 draw (to avoid top seed picked in later rounds)
+			
+				utils.shuffle(data.seed2);
+				remainingSeedTwo = data.seed2.splice(3, 4) //take 4 teams from seed 2 for round 3 & 4 draw (to avoid top seed picked in later rounds)
 				var b = seedTwo.splice(5, 1); // pick 1 team from seed 2 so possibility of 2nd seed team getting in no.1 position.
 				var finalTeamsA = b.concat(seedOne); // adding 1 team from seed 2 to seed 1 array
 				utils.shuffle(finalTeamsA); // shuffle the array
@@ -57,7 +64,7 @@
 				draw(4, finalTeamsA, 0); //position 1-4 draw}
 				drawnTeams = drawnTeams.concat(finalTeamsA);
                 s1 = utils.shuffle(finalTeamsA);
-			})();
+		
 
 			//positions 2 for each group - Containing remaining teams from seed 1 all teams from seed 2 & possibly 2 from seed 3
 			(function() {
