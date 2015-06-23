@@ -56,13 +56,6 @@ jQuery(function ($) {
 	
 		drawfull.draw();
 
-		//pick team button
-		$("#teamPicked").hide();
-		$("select").hide();
-
-
-
-
 		$('select').change(function() { //take selected option
 
 
@@ -145,10 +138,12 @@ jQuery(function ($) {
 			//flagValue = drawfull.allTeams[parsedValue].number;
 			if (inDraw == false) {
 
+
+
+			//*******bug needs fixing here. Flag dissapears when you have selected team. Intermitent.
               //  removedTeam = $('td').eq(tablePos).text();
 				$('td').eq(tablePos).text(textSelected).prepend(flagArray.flagsG[drawfull.allTeams[parsedValue]]).addClass('red');
 			}
-			console.log(drawfull.allteams);
             
             var newTeamArray = [];
             $("#tables").find("tr").each(function(){

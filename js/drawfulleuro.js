@@ -28,17 +28,6 @@
 			//organise arrays into alphabetical order for select list
 			utils.sortArrays(data.allTeams);
 
-			/*
-			//organise arrays into alphabetical order for select list
-			data.allTeams.sort(function(a, b) {
-				var nameA = a.name.toUpperCase();
-				var nameB = b.name.toUpperCase();
-				return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
-			});
-			*/
-
-
-
 			//positions 1 for each group - Containing 3 or 4 teams from seed 1 & possibly 1 team from seed 2 
 			(function() {
 				utils.shuffle(data.seedTwo);
@@ -92,5 +81,7 @@
         this.allTeams = data.allTeams;
         this.drawnTeams = data.drawnTeams;
 		};
+		jQuery("#teamPicked").hide();
+		jQuery("select").hide();
 	};
 
