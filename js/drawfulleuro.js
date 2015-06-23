@@ -15,33 +15,27 @@
 				drawnTeams : []
 				}
 
-				
-				for (var i = 0; i <=data.allTeams.length-1; i++) {
-					var seed = data.allTeams[i].seedGroup;
-					if (seed == 1) {
-						data.seedOne.push(data.allTeams[i]);
-					} else if (seed == 2) {
-						data.seedTwo.push(data.allTeams[i]);
-					} else if (seed == 3) {
-						data.seedThree.push(data.allTeams[i]);
-					} else if (seed == 4) {
-						data.seedFour.push(data.allTeams[i]);
-					} 
-				}
 			
+			//Sort teams into correctly seeded groups
+			utils.sortSeedGroups(data.seedOne, data.seedTwo, data.seedThree, data.seedFour, data.allTeams);
 
+			//Shuffle the teams within each group to further randomise the draw
 			utils.shuffle(data.seedOne);
 			utils.shuffle(data.seedTwo);
 			utils.shuffle(data.seedThree);
 			utils.shuffle(data.seedFour);
 
 			//organise arrays into alphabetical order for select list
+			utils.sortArrays(data.allTeams);
+
+			/*
+			//organise arrays into alphabetical order for select list
 			data.allTeams.sort(function(a, b) {
 				var nameA = a.name.toUpperCase();
 				var nameB = b.name.toUpperCase();
 				return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
 			});
-
+			*/
 
 
 

@@ -14,6 +14,7 @@ object
 */
 
 function team(name, seedGroup, number) {
+
 	this.name = name;
 	this.seedGroup = seedGroup;
 	this.number = number;
@@ -22,7 +23,7 @@ function team(name, seedGroup, number) {
  //noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
 function draw(noTeams, teams, tablePosition) {
     noTeams = noTeams - 1;
-    for (i = 0, x = 0; i <= noTeams; i++, x++) {
+    for (var i = 0, x = 0; i <= noTeams; i++, x++) {
         var j = teams[x];
         jQuery('.myTables').find('td').eq(i + tablePosition).text(j.name).prepend(flagArray.flagsG[j.number]).addClass("flag");
         tablePosition = tablePosition + 3;
@@ -40,10 +41,8 @@ null
 object
 
 */
-
 function generate_flags() {
-
-	flagArray = [];
+    var flagArray = [];
 	//create image for use in flag constructor.
     createImage = function(src, title) {
         img   = new Image();
@@ -93,7 +92,7 @@ function buttons() {
         }
 }
 
-function utils (max, array) {
+function utils () {
 
 /*
 ///Random Number generator for use within script
@@ -107,29 +106,33 @@ rndNumb - the random number generated
 */
 
 
-	this.randNumber = function (max) {
-	rndNumb = Math.floor((Math.random() * max) + 1);
-	return rndNumb;
-}
+    this.randNumber = function (max) {
+        var rndNumb;
+        rndNumb = Math.floor((Math.random() * max) + 1);
+	   return rndNumb;
+    }
 
     this.shuffle = function (array) {
-                var currentIndex = array.length,
+        var currentIndex;
+        var randomIndex;
+        var temporaryValue;
+        
+        currentIndex = array.length,
                 temporaryValue, randomIndex;
 
-                //while elements remain to be shuffled
-                while (0 !== currentIndex) {
+            //while elements remain to be shuffled
+            while (0 !== currentIndex) {
+                // pick a remaining element
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
 
-                    // pick a remaining element
-                    randomIndex = Math.floor(Math.random() * currentIndex);
-                    currentIndex -= 1;
-
-                    //Swap it with current element
-                    temporaryValue = array[currentIndex];
-                    array[currentIndex] = array[randomIndex];
-                    array[randomIndex] = temporaryValue;
+                //Swap it with current element
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
                 }
-                return array;
-            }
+        return array;
+    }
 
 
     this.getScreenSize = function (){ 
@@ -150,7 +153,41 @@ rndNumb - the random number generated
             rndTabPos = Math.floor((Math.random() * (max - min + 1)) + min);
             return rndTabPos;
         }
+
+
+    this.sortSeedGroups = function (seed1, seed2, seed3, seed4, allTeamsArray) {
+        for (var i = 0; i <=allTeamsArray.length-1; i++) {
+            var seed = allTeamsArray[i].seedGroup;
+            if (seed == 1) {
+                seed1.push(allTeamsArray[i]);
+                } else if (seed == 2) {
+                    seed2.push(allTeamsArray[i]);
+                        } else if (seed == 3) {
+                            seed3.push(allTeamsArray[i]);
+                                 } else if (seed == 4) {
+                                     seed4.push(allTeamsArray[i]);
+                                    } 
+                        }
+
+                }
+
+
+
+
+    this.sortArrays = function (array) {
+        array.sort(function(a, b) {
+            var nameA = a.name.toUpperCase();
+            var nameB = b.name.toUpperCase();
+            return (nameA < nameB) ? -1 : nameA > nameB ? 1 : 0;
+        });
+
+    }
 }
+/*
+    this.sortAllTeamsAZ function () {
+
+    }*/
+
 
 function displayDraw(seeds) {
 

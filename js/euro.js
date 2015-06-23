@@ -16,15 +16,15 @@
 	var germany = new team("Germany", 1, 10);
 	var greece = new team("Greece", 2, 11);
 	var hungary = new team("Hungary", 3, 12);
-	var israel = new team("Israel", 4, 13);
-	var italy = new team("Italy", 1, 14);
-	var montenegro = new team("Montenegro", 4, 15);
-	var netherlands = new team("Netherlands", 1, 16);
+	var ireland = new team("Ireland", 4, 13);
+	var israel = new team("Israel", 4, 14);
+	var italy = new team("Italy", 1, 15);
+	var montenegro = new team("Montenegro", 4, 16);
 	var northernIreland = new team("N.Ireland", 4, 17);
-	var norway = new team("Norway", 4, 18);
-	var poland = new team("Poland", 4, 19);
-	var portugal = new team("Portugal", 2, 20);
-	var ireland = new team("Ireland", 4, 21);
+	var netherlands = new team("Netherlands", 1, 18);
+	var norway = new team("Norway", 4, 19);
+	var poland = new team("Poland", 4, 20);
+	var portugal = new team("Portugal", 2, 21);
 	var romania = new team("Romania", 2, 22);
 	var russia = new team("Russia", 2, 23);
 	var scotland = new team("Scotland", 3, 24);
@@ -75,15 +75,16 @@ jQuery(function ($) {
 			checkSelect = valueSelected;
 
 
+
 			//if team not in primary draw decide where to put team selected depending on their seed/seedgroup
 			tablePos = 0;
 			if (drawfull.allTeams[parsedValue].seedGroup == 1) {
-				var x = utils.randNumber(10);
-				if (x <= 7) {
+				var x = utils.randNumber(100);
+				if (x <= 70) {
 					tablePos = utils.randTablePos(0, 3);
-				} else if (x >= 8 && x <= 9) {
+				} else if (x >= 71 && x <= 99) {
 					tablePos = utils.randTablePos(4, 7);
-				} else if (x == 10) {
+				} else if (x == 100) {
 					tablePos = utils.randTablePos(8, 11);
 				} else {
 					return false;
@@ -91,12 +92,12 @@ jQuery(function ($) {
 			}
 
 			if (drawfull.allTeams[parsedValue].seedGroup == 2) {
-				var x = utils.randNumber(10);
-				if (x <= 2) {
+				var x = utils.randNumber(100);
+				if (x <= 35) {
 					tablePos = utils.randTablePos(0, 3);
-				} else if (x >= 3 && x <= 8) {
+				} else if (x >= 36 && x <= 90) {
 					tablePos = utils.randTablePos(4, 7);
-				} else if (x >= 8 && x <= 10) {
+				} else if (x >= 91 && x <= 100) {
 					tablePos = utils.randTablePos(8, 11);
 				} else {
 					return false;
@@ -105,12 +106,12 @@ jQuery(function ($) {
 
 
 			if (drawfull.allTeams[parsedValue].seedGroup == 3) {
-				var x = utils.randNumber(10);
-				if (x <= 1) {
+				var x = utils.randNumber(100);
+				if (x <= 7) {
 					tablePos = utils.randTablePos(4, 7);
-				} else if (x >= 2 && x <= 8) {
+				} else if (x >= 8 && x <= 30) {
 					tablePos = utils.randTablePos(8, 11);
-				} else if (x >= 9 && x <= 10) {
+				} else if (x >= 31 && x <= 100) {
 					tablePos = utils.randTablePos(12, 15);
 				} else {
 					return false;
@@ -118,10 +119,10 @@ jQuery(function ($) {
 			}
 
 			if (drawfull.allTeams[parsedValue].seedGroup == 4) {
-				var x = utils.randNumber(10);
-				if (x <= 2) {
+				var x = utils.randNumber(100);
+				if (x <= 1) {
 					tablePos = utils.randTablePos(8, 11);
-				} else if (x >= 2 && x <= 10) {
+				} else if (x >= 2 && x <= 100) {
 					tablePos = utils.randTablePos(12, 15);
 				} else {
 					return false;
@@ -141,12 +142,13 @@ jQuery(function ($) {
 			};
 
 
-			flagValue = drawfull.allTeams[parsedValue].number;
+			//flagValue = drawfull.allTeams[parsedValue].number;
 			if (inDraw == false) {
 
               //  removedTeam = $('td').eq(tablePos).text();
-				$('td').eq(tablePos).text(textSelected).prepend(flagArray.flagsG[flagValue]).addClass('red');
+				$('td').eq(tablePos).text(textSelected).prepend(flagArray.flagsG[drawfull.allTeams[parsedValue]]).addClass('red');
 			}
+			console.log(drawfull.allteams);
             
             var newTeamArray = [];
             $("#tables").find("tr").each(function(){
