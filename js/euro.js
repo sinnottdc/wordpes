@@ -1,5 +1,4 @@
 
-//	Team object constructor
 
 
 //	Team object creations
@@ -41,8 +40,10 @@
 	element = 0;
 	var elementCounter = 0;
 	var screenWidth = true;
+	var zone = 'euro';
+	
 
-    var flagArray = new generate_flags('euro');
+    var flagArray = new generate_flags(zone);
     var buttons = new buttons();
     var utils = new utils();
     var drawfull = new drawfull();
@@ -54,7 +55,9 @@ jQuery(function ($) {
 //	Function to pick random teams from each seed group & input into table
 	$(document).ready(function() {
 	
-		drawfull.draw();
+		drawfull.drawEuro();
+		jQuery("#teamPicked").hide();
+		jQuery("select").hide();
 
 		$('select').change(function() { //take selected option
 

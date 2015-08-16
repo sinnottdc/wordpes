@@ -37,9 +37,11 @@ wp_enqueue_script('scroll');
 wp_register_script('sharedFunctions', get_template_directory_uri() . '/js/sharedFunctions.js', '', '', true );
 wp_enqueue_script('sharedFunctions');
 
+	wp_register_script('drawfull', get_template_directory_uri() . '/js/drawfull.js','', '', true);
+	wp_enqueue_script('drawfull');
+
 if (is_page_template('euro.php'))  {
-	wp_register_script('drawfulleuro', get_template_directory_uri() . '/js/drawfulleuro.js','', '', true);
-	wp_enqueue_script('drawfulleuro');
+
 	wp_register_script('euro', get_template_directory_uri() . '/js/euro.js','', '', true);
 	wp_enqueue_script('euro');
 }

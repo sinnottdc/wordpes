@@ -2,7 +2,7 @@
 	//function for drawing all teams based on seed/seedgroup
 		function drawfull() {
 
-			this.draw = function () {
+			this.drawEuro = function () {
 
 				var data = {
 				allTeams : [france, germany, italy, netherlands, belgium, spain, portugal, greece, croatia, bosnia, england, 

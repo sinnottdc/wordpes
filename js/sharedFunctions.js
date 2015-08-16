@@ -13,12 +13,14 @@ object
 
 */
 
-function team(name, seedGroup, number) {
+function team(name, seedGroup, number, region) {
 
 	this.name = name;
 	this.seedGroup = seedGroup;
 	this.number = number;
+    this.region = region;
 }
+
 
  //noTeams = how many teams to pick / teams = name of array / tablePosition = td position in dom 
 function draw(noTeams, teams, tablePosition) {
@@ -70,7 +72,11 @@ function buttons() {
 
 			//reset button function
 		this.reset = function () {
-			drawfull.draw(); //re-run draw
+            if(zone == 'euro'){
+			drawfull.drawEuro(); //re-run draw
+        } else {
+            drawfullWC.drawWorld();
+        }
 			jQuery('td').removeClass("red");
 			jQuery('td.table').addClass("hide");
 			element = 0;
@@ -79,7 +85,9 @@ function buttons() {
 			jQuery('#pickTeam').show();
 			jQuery("#teamPicked").hide();
 			pickedTeams = []; // reset picked teams array as it was causing issues if not
-			jQuery("html, body").animate({scrollTop:0}, 300);
+			if (window.matchMedia('(max-width: 370px)').matches) {
+                jQuery("html, body").animate({scrollTop:0}, 300);
+            }
 		}
 
 
