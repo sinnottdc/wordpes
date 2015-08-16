@@ -42,7 +42,7 @@
 	var elementCounter = 0;
 	var screenWidth = true;
 
-    var flagArray = new generate_flags();
+    var flagArray = new generate_flags('euro');
     var buttons = new buttons();
     var utils = new utils();
     var drawfull = new drawfull();

@@ -101,23 +101,8 @@
 	var elementCounter = 0;
 	var screenWidth = true;
 
+	var flagArray = new generate_flags('world');
 
-	var createImage = function(src, title) {
-		var img   = new Image();
-		img.src   = src;
-		img.alt   = title;
-		img.title = title;
-		return img; 
-	};
-
-//	array of images
-	var flagArray = [];
-
-//	push two images to the array
-//	images.push(createImage("images/Austria.jpg", "Austria"));
-	for (flags=0; flags<=80; flags++) {
-		flagArray.push(createImage(template_url + "/images/worldFlags/" + [flags] +".png"));
-	}
 //	Function to pick random teams from each seed group & input into table
 	$(document).ready(function() {
 
@@ -573,7 +558,7 @@
 
 				for (i = 0; i < 4; i++) {
 					flagValue = group[i].number;
-					$('.myTables').find('td').eq(tablePosition).text(group[i].name).prepend(flagArray[flagValue]).addClass("flag");
+					$('.myTables').find('td').eq(tablePosition).text(group[i].name).prepend(flagArray.flagsG[flagValue]).addClass("flag");
 					tablePosition++;
 				}
 			}
@@ -645,7 +630,7 @@
 					for (x=1; x<=3; x++){
 						if (allTeams[parsedValue].region==allGroups[randomGroup][x].region) {
 							flagValue = allTeams[parsedValue].number;
-							$('td').eq(x + (randomGroup * 4) ).text(textSelected).prepend(flagArray[flagValue]).addClass('red');
+							$('td').eq(x + (randomGroup * 4) ).text(textSelected).prepend(flagArray.flagsG[flagValue]).addClass('red');
 							x=0;
 							inDraw = true;
 							break;

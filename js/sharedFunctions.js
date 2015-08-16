@@ -41,8 +41,13 @@ null
 object
 
 */
-function generate_flags() {
+function generate_flags(zone) {
     var flagArray = [];
+    if (zone == 'euro'){
+        numTeams = 33;
+    } else {
+        numTeams = 80;
+    }
 	//create image for use in flag constructor.
     createImage = function(src, title) {
         img   = new Image();
@@ -53,8 +58,8 @@ function generate_flags() {
         return img; 
     };
         //  push two images to the array
-        for (flags=0; flags<=33; flags++) {
-            flagArray.push(createImage(template_url + "/images/euroFlags/" + [flags] +".png"));
+        for (flags=0; flags<=numTeams; flags++) {
+            flagArray.push(createImage(template_url + "/images/"+ zone +"Flags/" + [flags] +".png"));
         }
 
     this.flagsG = flagArray;
